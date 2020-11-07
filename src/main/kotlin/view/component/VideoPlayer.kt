@@ -5,7 +5,6 @@ import kotlinx.html.js.onClickFunction
 import model.Video
 import react.*
 import react.dom.h3
-import react.dom.img
 import styled.css
 import styled.styledButton
 import styled.styledDiv
@@ -24,6 +23,20 @@ class VideoPlayer : RComponent<VideoPlayerProps, RState>() {
                 top = 10.px
                 right = 10.px
 
+            }
+            emailShareButton {
+                attrs.url = props.video.videoUrl
+                emailIcon {
+                    attrs.size = 32
+                    attrs.round = true
+                }
+            }
+            telegramShareButton {
+                attrs.url = props.video.videoUrl
+                telegramIcon {
+                    attrs.size = 32
+                    attrs.round = true
+                }
             }
             h3 {
                 +"${props.video.speaker}: ${props.video.title}"
@@ -44,10 +57,8 @@ class VideoPlayer : RComponent<VideoPlayerProps, RState>() {
                     +"Mark as unwatched"
                 }
             }
-            img {
-                attrs {
-                    src = "https://via.placeholder.com/640x360.png?text=Video+Player+Placeholder"
-                }
+            reactPlayer {
+                attrs.url = props.video.videoUrl
             }
         }
     }
